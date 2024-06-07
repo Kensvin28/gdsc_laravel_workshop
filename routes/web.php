@@ -33,4 +33,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('customers', App\Http\Controllers\CustomerController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('customers', App\Http\Controllers\CustomerController::class);
+});
